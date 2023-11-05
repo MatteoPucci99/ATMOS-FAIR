@@ -101,7 +101,7 @@ const ShowForecastWeather = (props) => {
     <Container className="rounded-4 mt-3" id="showForecast">
       <Row className="row-cols-1 text-center py-2">
         <Col className="px-3">
-          <div className="fs-3">5 Days Forecast</div>
+          <div className="fs-3">Previsioni per 5 giorni</div>
         </Col>
         <Col className="d-flex flex-column justify-content-between">
           {renderForecastRows()}
