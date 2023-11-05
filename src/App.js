@@ -9,7 +9,7 @@ import logo from "./img/logo2.png";
 import Notfound from "./components/Notfound";
 
 function App() {
-  const [weatherLocation, setWeatherLocation] = useState(undefined);
+  const [weatherLocation, setWeatherLocation] = useState("Massa");
 
   const findLocation = (location) => setWeatherLocation(location);
 
@@ -27,7 +27,7 @@ function App() {
           />
           {weatherLocation === "" ? (
             <Notfound />
-          ) : weatherLocation === undefined ? null : (
+          ) : (
             <Row className="row-cols-1">
               <Col className="rounded-5 d-flex justify-content-center">
                 <Actualweather location={weatherLocation} />
