@@ -1,14 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import Searchbar from "./components/Searchbar";
 import Actualweather from "./components/Actualweather";
 import Forecastweather from "./components/Forecastweather";
 import { useState } from "react";
 import "./style/style.css";
 import logo from "./img/logo2.png";
+import Notfound from "./components/Notfound";
 
 function App() {
-  const [weatherLocation, setWeatherLocation] = useState("");
+  const [weatherLocation, setWeatherLocation] = useState(undefined);
 
   const findLocation = (location) => setWeatherLocation(location);
 
@@ -24,14 +25,18 @@ function App() {
             findLocation={findLocation}
             weatherLocation={weatherLocation}
           />
-          <Row className="row-cols-1">
-            <Col className="rounded-5">
-              <Actualweather location={weatherLocation} />
-            </Col>
-            <Col>
-              <Forecastweather location={weatherLocation} />
-            </Col>
-          </Row>
+          {weatherLocation === "" ? (
+            <Notfound />
+          ) : weatherLocation === undefined ? null : (
+            <Row className="row-cols-1">
+              <Col className="rounded-5 d-flex justify-content-center">
+                <Actualweather location={weatherLocation} />
+              </Col>
+              <Col>
+                <Forecastweather location={weatherLocation} />
+              </Col>
+            </Row>
+          )}
         </Col>
       </Row>
     </Container>

@@ -41,9 +41,9 @@ const ShowActualWeather = (props)=>{
               (() => {
                 switch (props.data.weather[0].description) {
                   case 'cielo sereno':
-                    return <img src={currentHour >= 19 ? clear2 : clear1} alt="clear" />;
+                    return <img src={currentHour >= 18 ? clear2 : clear1} alt="clear" />;
                   case 'poche nuvole':
-                    return <img src={currentHour >= 19 ? fclouds2 : fclouds} alt='clouds'/>;
+                    return <img src={currentHour >= 18 ? fclouds2 : fclouds} alt='clouds'/>;
                   case 'nubi sparse':
                     return <img src={clouds} alt='clouds'/>;   
                   case 'nuvole spezzate':
