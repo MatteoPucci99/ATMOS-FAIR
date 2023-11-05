@@ -7,7 +7,7 @@ const Forecastweather = (props)=>{
     const [forecastData,setForecastData] = useState({})
     
     const getForecastDetails = (details)=>{
-        fetch(`https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${details[0].lat}&lon=${details[0].lon}&appid=af5fd8bce7d15b37aaa435f691fc2a00`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${details[0].lat}&lon=${details[0].lon}&units=metric&appid=af5fd8bce7d15b37aaa435f691fc2a00`)
         .then(res=>{
             if(res.ok){
                 return res.json()
@@ -47,6 +47,11 @@ const Forecastweather = (props)=>{
 
         }
     }, [props.location])
+
+    
+    if (!Object.keys(forecastData).length) {
+        return null; 
+      }
 
     return (
         <ShowForecastWeather data={forecastData}/>

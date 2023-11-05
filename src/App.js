@@ -5,6 +5,7 @@ import Actualweather from "./components/Actualweather";
 import Forecastweather from "./components/Forecastweather";
 import { useState } from "react";
 import "./style/style.css";
+import logo from "./img/logo2.png";
 
 function App() {
   const [weatherLocation, setWeatherLocation] = useState("");
@@ -12,28 +13,25 @@ function App() {
   const findLocation = (location) => setWeatherLocation(location);
 
   return (
-    <Container id="container">
+    <Container>
+      <div className="text-center mt-3 d-flex justify-content-center">
+        <img src={logo} alt="logo" />
+        <h3 className="mb-0 ms-2 d-flex align-items-center">EPI-WEATHER</h3>
+      </div>
       <Row className="justify-content-center">
-        <Col xs={12} md={10} lg={6} className="p-0 rounded-4" id="mainContent">
-          <div className="p-4 rounded-4" id="mainCol">
-            <Searchbar
-              findLocation={findLocation}
-              weatherLocation={weatherLocation}
-            />
-            <Row className="row-cols-1">
-              {/* In className della row ci sarebbe stato un "row-cols-lg-2 per gestire lo spazio" */}
-              {/* se il componente Forecastweather funzionasse */}
-              <Col id="secondContent" className="rounded-5">
-                <Actualweather location={weatherLocation} />
-              </Col>
-              <Col>
-                {/* Non capisco come mai il risultato della fetch mi dia un error 401. */}
-                {/* Perciò non riesco ad andare avanti con questo componente :( ) */}
-
-                {/* <Forecastweather location={weatherLocation} /> */}
-              </Col>
-            </Row>
-          </div>
+        <Col xs={10} md={10} lg={6} className="p-0 rounded-4">
+          <Searchbar
+            findLocation={findLocation}
+            weatherLocation={weatherLocation}
+          />
+          <Row className="row-cols-1">
+            <Col className="rounded-5">
+              <Actualweather location={weatherLocation} />
+            </Col>
+            <Col>
+              <Forecastweather location={weatherLocation} />
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Container>
