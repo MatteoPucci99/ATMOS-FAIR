@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ShowActualWeather from "./ShowActualWeather";
+import { motion } from "framer-motion";
+
 
 
 const Actualweather = (props) => {
@@ -61,7 +63,7 @@ const Actualweather = (props) => {
     return null;
   }
 
-  return <ShowActualWeather data={weatherData} />;
+  return  <ShowActualWeather data={weatherData} />
 };
 
 export default Actualweather;
