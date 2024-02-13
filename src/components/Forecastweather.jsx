@@ -5,7 +5,8 @@ import ShowForecastWeather from "./ShowForecastWeather"
 
 const Forecastweather = (props)=>{
     const [forecastData,setForecastData] = useState({})
-    
+
+    //Funzione per ricevere tutti i dettagli del meteo della località desiderata. Questi dati verranno salvati nello stato e passati come prop al componente ShowForecastWeather
     const getForecastDetails = (details)=>{
         fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${details[0].lat}&lon=${details[0].lon}&units=metric&appid=af5fd8bce7d15b37aaa435f691fc2a00`)
         .then(res=>{
@@ -22,7 +23,7 @@ const Forecastweather = (props)=>{
             console.log(err)
         })
     }
-
+    //Funzione per ricevere i dati di latitudine e longitudine della località cercata. Questi dati verranno passati alla funzione getForecastDetails che viene chiamata in caso di successo della fetch.
     const getForecastData = ()=>{
         fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${props.location}&limit=1&appid=af5fd8bce7d15b37aaa435f691fc2a00`)
         .then(res=>{

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const Actualweather = (props) => {
   const [weatherData, setWeatherData] = useState({});
    
-
+  //Funzione per ricevere tutti i dettagli del meteo della località desiderata. Questi dati verranno salvati nello stato e passati come prop al componente ShowActualWeather
   const getWeatherDetails = (details) => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${details[0].lat}&lon=${details[0].lon}&units=metric&lang=it&appid=af5fd8bce7d15b37aaa435f691fc2a00`
@@ -28,7 +28,8 @@ const Actualweather = (props) => {
         
       });
   };
-
+  //Funzione per ricevere i dati di latitudine e longitudine della località cercata. Questi dati verranno passati alla funzione getWeatherDetails che viene chiamata
+  // in caso di successo della fetch.
   const getWeatherData = () => {
     fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${props.location}&limit=1&appid=af5fd8bce7d15b37aaa435f691fc2a00`

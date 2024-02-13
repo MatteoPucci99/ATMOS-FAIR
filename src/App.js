@@ -11,7 +11,8 @@ import { motion } from "framer-motion";
 
 function App() {
   const [weatherLocation, setWeatherLocation] = useState("Massa");
-  //Funzione per gestire lo stato weatherLocation da passare come prop per permettere a SearchBar di manipolare lo stato di App
+  //Funzione per gestire lo stato weatherLocation da passare come prop per permettere a SearchBar di manipolare lo stato di App che verrà passato ai componenti
+  //Actualweather e Forecastweather per gestire le fetch
   const findLocation = (location) => setWeatherLocation(location);
 
   return (
@@ -22,10 +23,7 @@ function App() {
       </div>
       <Row className="justify-content-center">
         <Col xs={10} md={10} lg={6} className="p-0 rounded-4">
-          <Searchbar
-            findLocation={findLocation}
-            weatherLocation={weatherLocation}
-          />
+          <Searchbar findLocation={findLocation} />
 
           {weatherLocation === "" ? (
             //Se non viene cercato nulla comparirà notFound sennò verrà cercata la città desiderata
