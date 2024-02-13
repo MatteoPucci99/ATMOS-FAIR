@@ -19,7 +19,8 @@ import mist from '../img/weather_icons/50d.png'
 
 const ShowActualWeather = (props)=>{
 
-   console.log(props.data)
+   
+   //Current hour mi serve come condizione per utilizzare le icone con tema notturno dopo le 18:00
    const currentHour = new Date().getHours()
 
     return (
@@ -39,6 +40,7 @@ const ShowActualWeather = (props)=>{
             <div className="mt-1">
             {
               (() => {
+                //Switch per analizzare tutti i vari casi del meteo e utilizzare l'icona corrispondete al caso meteo corretto.
                 switch (props.data.weather[0].description) {
                   case 'cielo sereno':
                     return <img src={currentHour >= 18 ? clear2 : clear1} alt="clear" />;

@@ -69,12 +69,15 @@ const weatherIcons = {
 };
 
 const ShowForecastWeather = (props) => {
+  
+  //Funzione per formattare la data nel seguento modo es: "mer 14 feb"
   const formatDate = (string) => {
     const settings = { day: 'numeric', month: 'short', weekday: 'short' };
     const dateTime = new Date(string);
     return dateTime.toLocaleDateString('it-IT', settings);
   };
 
+  //Funzione che ritorna una icona specificai in base alla descrizione
   const handleWeatherIcon = (description) => {
     return weatherIcons[description] || null;
   };
