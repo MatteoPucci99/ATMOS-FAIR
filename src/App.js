@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Searchbar from "./components/Searchbar";
 import Actualweather from "./components/Actualweather";
 import Forecastweather from "./components/Forecastweather";
@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 
 function App() {
   const [weatherLocation, setWeatherLocation] = useState("Massa");
-
+  //Funzione per gestire lo stato weatherLocation da passare come prop per permettere a SearchBar di manipolare lo stato di App
   const findLocation = (location) => setWeatherLocation(location);
 
   return (
@@ -26,7 +26,9 @@ function App() {
             findLocation={findLocation}
             weatherLocation={weatherLocation}
           />
+
           {weatherLocation === "" ? (
+            //Se non viene cercato nulla comparirà notFound sennò verrà cercata la città desiderata
             <motion.div
               key={weatherLocation}
               initial={{ opacity: 0, scale: 0.9 }}
